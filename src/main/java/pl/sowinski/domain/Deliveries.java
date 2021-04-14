@@ -1,12 +1,10 @@
 package pl.sowinski.domain;
 
-import java.time.LocalDateTime;
-
 public class Deliveries {
     private int id;
-    private LocalDateTime localDateTime;
-    private LocalDateTime start;
-    private LocalDateTime end;
+    private String date;
+    private String start;
+    private String end;
     private int packaging;
     private String description;
     private int userId;
@@ -16,8 +14,8 @@ public class Deliveries {
     public Deliveries() {
     }
 
-    public Deliveries(LocalDateTime localDateTime, LocalDateTime start, LocalDateTime end, int packaging, String description, int userId, int suppliersId) {
-        this.localDateTime = localDateTime;
+    public Deliveries(String date, String start, String end, int packaging, String description, int userId, int suppliersId) {
+        this.date = date;
         this.start = start;
         this.end = end;
         this.packaging = packaging;
@@ -34,27 +32,27 @@ public class Deliveries {
         this.id = id;
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
+    public String getDate() {
+        return this.date;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
+    public void setDate(String date) {
+        this.date = date;
     }
 
-    public LocalDateTime getStart() {
+    public String getStart() {
         return start;
     }
 
-    public void setStart(LocalDateTime start) {
+    public void setStart(String start) {
         this.start = start;
     }
 
-    public LocalDateTime getEnd() {
+    public String getEnd() {
         return end;
     }
 
-    public void setEnd(LocalDateTime end) {
+    public void setEnd(String end) {
         this.end = end;
     }
 
