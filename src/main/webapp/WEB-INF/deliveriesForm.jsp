@@ -87,8 +87,9 @@ Opakowania <input type="checkbox" name="packaging" value="1"></br>
     $(function () {
         $('#datetimepicker3').datetimepicker({
             viewMode: 'days',
-            format: 'DD/MM/YYYY',
+            format: 'DD-MM-YYYY',
             locale: 'pl'
+
         });
     });
 
