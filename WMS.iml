@@ -46,5 +46,6 @@
     <orderEntry type="library" name="bootstrap-datetimepicker" level="application" />
     <orderEntry type="library" name="moment.js" level="application" />
     <orderEntry type="library" name="bootstrap-datepicker" level="application" />
+    <orderEntry type="library" name="index" level="application" />
   </component>
 </module>
