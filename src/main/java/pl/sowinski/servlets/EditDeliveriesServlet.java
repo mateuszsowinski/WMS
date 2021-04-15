@@ -12,18 +12,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.Locale;
 
-@WebServlet("/app/add/deliveries")
-public class DeliveriesServlet extends HttpServlet {
+@WebServlet("/app/edit")
+public class EditDeliveriesServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
         String date = request.getParameter("date");
         String start = request.getParameter("start");
         String end = request.getParameter("end");
@@ -31,18 +27,20 @@ public class DeliveriesServlet extends HttpServlet {
         String description = request.getParameter("description");
         int suppliers = Integer.parseInt(request.getParameter("suppliersId"));
 
-
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
 
         HttpSession httpSession = request.getSession();
         User user = (User) httpSession.getAttribute("userName");
 
         Deliveries deliveries = new Deliveries();
+        DeliveriesDao deliveriesDao = new DeliveriesDao();
+
         try {
             deliveries.setDate(simpleDateFormat.parse(date));
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        deliveries.setId(id);
         deliveries.setStart(start);
         deliveries.setEnd(end);
         deliveries.setPackaging(packaging);
@@ -51,16 +49,20 @@ public class DeliveriesServlet extends HttpServlet {
         deliveries.setSuppliersId(suppliers);
         deliveries.setLocalDateTime(LocalDateTime.now());
 
-        DeliveriesDao deliveriesDao = new DeliveriesDao();
-        deliveriesDao.create(deliveries);
+        deliveriesDao.edit(deliveries);
         response.sendRedirect(request.getContextPath() +"/app/landing");
-
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        int id = Integer.parseInt(request.getParameter("id"));
+
+        DeliveriesDao deliveriesDao = new DeliveriesDao();
+        Deliveries deliveries = deliveriesDao.readById(id);
         SuppliersDao suppliersDao = new SuppliersDao();
 
         request.setAttribute("suppliers", suppliersDao.readAll());
-        getServletContext().getRequestDispatcher("/WEB-INF/deliveriesForm.jsp").forward(request, response);
+        request.setAttribute("edit", deliveries);
+
+        getServletContext().getRequestDispatcher("/WEB-INF/editDeliveriesForm.jsp").forward(request,response);
     }
 }

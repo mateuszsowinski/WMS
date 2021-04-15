@@ -12,7 +12,7 @@
     <title>Dostawy- Hurtownia Nowak</title>
     <link href="<c:url value="/css/style.css"/>" rel="stylesheet">
     <script src="https://fer-api.coderslab.pl/bootstrap/js/index.min.js"></script>
-    <script>new CL ({
+    <script>new CL({
 
         fontAwesome: true
     });</script>
@@ -27,29 +27,39 @@
                 <div>
                     <h5>${date.key}</h5>
                 </div>
-                <div>
-                    <button class="btn btn-outline-danger btn-sm ml-2">Delete</button>
-                </div>
-            </div>
-        <c:forEach items="${date.value}" var="details">
-            <ul class="list-group list-group-flush">
-                <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <div>
-                        <p class="deliveries">Dodane przez: ${details.username}, ${details.localDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"))}</p>
-                        <span class="badge badge-success badge-pill ml-2">${details.start}</span>
-                        <span class="badge badge-success badge-pill ml-2">${details.end}</span>
-                        ${details.name}
 
-                    </div>
-                </li>
-            </ul>
-        </c:forEach>
+            </div>
+            <c:forEach items="${date.value}" var="details">
+                <ul class="list-group list-group-flush " >
+                    <li class="list-group-item d-flex justify-content-between align-items-center " >
+                        <div>
+                            <p class="deliveries">Dodane
+                                przez: ${details.username}, ${details.localDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"))}</p>
+                            <span class="badge badge-success badge-pill ml-2">${details.start}</span>
+                            <span class="badge badge-success badge-pill ml-2">${details.end} </span>
+                                    ${details.name}
+
+                            <c:if test="${details.packaging == '1'}">
+                                <div>
+                                    <span class="badge badge-success badge-pill ml-2">Opakowania do zwrotu</span>
+                                </div>
+                            </c:if>
+                            <p class="desc"> ${details.description}</p>
+
+
+                        </div>
+                        <div>
+                            <button class="btn btn-dark btn-sm">Zakończ</button>
+                            <a class="btn btn-dark btn-sm" href="<c:url value="/app/edit?id=${details.id}"/> ">Edytuj</a>
+                            <a class="btn btn-outline-danger btn-sm ml-2" href='<c:url value="/app/delete?id=${details.id}"/>' onclick="return confirm('Czy chcesz usunąć wybraną pozycję?');">Usuń</a>
+
+                        </div>
+                    </li>
+                </ul>
+            </c:forEach>
         </section>
 
     </c:forEach>
-
-
-
 
 
 </main>

@@ -12,10 +12,10 @@ import java.util.*;
 
 public class DetailsDao {
 
-    private static final String DETAILS = "SELECT deliveries.date, deliveries.start, deliveries.end, deliveries.packaging, deliveries.description, deliveries.localdatetime, suppliers.name, u.username FROM deliveries JOIN suppliers on deliveries.suppliers_id = suppliers.id JOIN user u on deliveries.user_id = u.id ORDER BY deliveries.date DESC";
+    private static final String DETAILS = "SELECT deliveries.id, DATE_ADD(deliveries.date, INTERVAL 1 DAY ) as date, deliveries.start, deliveries.end, deliveries.packaging, deliveries.description, deliveries.localdatetime, suppliers.name, u.username FROM deliveries JOIN suppliers on deliveries.suppliers_id = suppliers.id JOIN user u on deliveries.user_id = u.id ORDER BY deliveries.date DESC;";
 
     public Map<Date, List<Details>> detailsMap(){
-        Map<Date, List<Details>> stringListMap = new HashMap<>();
+        Map<Date, List<Details>> stringListMap = new TreeMap<>(Collections.reverseOrder());
         try(Connection connection = DbUtil.getConnection();
             PreparedStatement preparedStatement = connection.prepareStatement(DETAILS)) {
             try (ResultSet resultSet = preparedStatement.executeQuery()) {
@@ -25,6 +25,7 @@ public class DetailsDao {
                         stringListMap.put(date, new ArrayList<Details>());
                     }
                     Details details = new Details();
+                    details.setId(resultSet.getInt("id"));
                     details.setDate(resultSet.getDate("date"));
                     details.setStart(resultSet.getString("start"));
                     details.setEnd(resultSet.getString("end"));
@@ -33,6 +34,7 @@ public class DetailsDao {
                     details.setLocalDateTime(resultSet.getTimestamp("localdatetime").toLocalDateTime());
                     details.setName(resultSet.getString("name"));
                     details.setUsername(resultSet.getString("username"));
+
                     stringListMap.get(date).add(details);
                 }
 

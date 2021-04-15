@@ -1,31 +1,45 @@
-header img  {
+header img {
     display: block;
     margin: 0 auto;
 }
-header span{
+
+header span {
     position: absolute;
     top: 36%;
     left: 18%;
     font-size: 28px;
     color: #fff;
 }
-.para{
+
+.para {
     margin-left: 13%;
     width: 75%;
 }
-.btn-success{
+
+.btn-success {
     margin-left: 42%;
     margin-top: 2%;
     cursor: pointer;
 }
-h2{
+
+h2 {
     color: #218838;
 }
-section{
-    margin-top:20px;
+
+section {
+    margin-top: 20px;
 }
 
-.deliveries{
+.desc {
+    color: #242424;
+    font-size: 0.9rem;
+    margin-left: 20px;
+}
+
+.deliveries {
     color: #757575;
     font-size: 0.7rem;
 }
+
+
+

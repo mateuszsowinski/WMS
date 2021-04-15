@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Date;
 
 public class Details {
-
+    private int id;
     private Date date;
     private String start;
     private String end;
@@ -26,6 +26,14 @@ public class Details {
     }
 
     public Details() {
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public Date getDate() {
