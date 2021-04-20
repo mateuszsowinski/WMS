@@ -24,6 +24,6 @@ public class AllDeliveriesServlet extends HttpServlet {
         DetailsDao detailsDao = new DetailsDao();
         Map<Date, List<Details>> detailsMap = detailsDao.detailsMap();
         request.setAttribute("details", detailsMap);
-        getServletContext().getRequestDispatcher("/WEB-INF/landing.jsp").forward(request, response);
+        getServletContext().getRequestDispatcher("/WEB-INF/index.jsp").forward(request, response);
     }
 }
