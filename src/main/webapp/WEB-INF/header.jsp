@@ -72,7 +72,7 @@
 
         <!-- Nav Item - Pages Collapse Menu -->
         <li class="nav-item">
-            <a class="nav-link collapsed" href="/app/add/deliveries" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <a class="nav-link collapsed" href="/app/add/deliveries" >
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Dodaj dostawę</span>
             </a>
@@ -80,7 +80,7 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link collapsed" href="/app/add/suppliers" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+            <a class="nav-link collapsed" href="/app/add/suppliers" >
                 <i class="fas fa-fw fa-cog"></i>
                 <span>Dostawcy</span>
             </a>
@@ -92,10 +92,10 @@
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
-        <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
-            <button class="rounded-circle border-0" id="sidebarToggle"></button>
-        </div>
+<%--        <!-- Sidebar Toggler (Sidebar) -->--%>
+<%--        <div class="text-center d-none d-md-inline">--%>
+<%--            <button class="rounded-circle border-0" id="sidebarToggle"></button>--%>
+<%--        </div>--%>
 
     </ul>
     <!-- End of Sidebar -->

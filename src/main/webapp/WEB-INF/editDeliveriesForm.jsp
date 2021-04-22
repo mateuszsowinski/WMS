@@ -46,7 +46,7 @@
 
 <div class="card shadow mb-4">
     <!-- Card Header - Accordion -->
-    <a class="d-block card-header py-3" >
+    <a class="d-block card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Dodaj dostawę</h6>
     </a>
     <!-- Card Content - Collapse -->
@@ -59,11 +59,12 @@
                 <li class="list-group-item d-flex justify-content-between align-items-center ">
                     <div class="ml-0">
 
-                        <form method="post" action="/app/add/deliveries">
+                        <form method="post" action="/app/edit">
+                            <input type="hidden" name="id" value="${edit.id}">
 
-                            <p>Data: <input type="text" name="date" id="datepicker-1" required></p>
-                            <p>Godzina rozpoczęcia: <input type="text"  name="start" id="startTime" required></p>
-                            <p>Godzina zakończenia: <input type="text" name="end" id="endTime" required></p>
+                            <p>Data: <input type="text" id="datepicker-1"  name="date" required></p>
+                            <p>Godzina rozpoczęcia: <input type="text"  name="start" id="startTime" value="${edit.start}" required></p>
+                            <p>Godzina zakończenia: <input type="text" name="end" id="endTime" value="${edit.end}"required></p>
 
                             <select class="form-control col-sm-10" id="chooseSuppliers" name="suppliersId" required>
 
@@ -73,7 +74,7 @@
                             </select>
                             <div class="my-2"></div>
 
-                            <input class="col-sm-5" name="description" type="text" placeholder="Uwagi"><br>
+                            <input class="col-sm-5" name="description" type="text" placeholder="Uwagi" value="${edit.description}"><br>
 
                             Opakowania <input type="checkbox" name="packaging" value="1"><br>
                             <input type="hidden" name="packaging" value="0">
