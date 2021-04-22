@@ -29,30 +29,9 @@
     <!-- Card Content - Collapse -->
 
 
-
-
     <div class="collapse show" id="collapseCardExample">
 
         <div class="card-body">
-
-
-            <div class="col-xl-3 col-md-6 mb-4">
-                <div class="card border-left-warning shadow h-100 py-2">
-                    <div class="card-body">
-                        <div class="row no-gutters align-items-center">
-                            <div class="col mr-2">
-                                <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Pending Requests</div>
-                                <div class="h5 mb-0 font-weight-bold text-gray-800">18</div>
-                            </div>
-                            <div class="col-auto">
-                                <i class="fas fa-comments fa-2x text-gray-300"></i>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
 
             <c:forEach items="${date.value}" var="details">
                 <ul class="list-group list-group-flush " >
@@ -60,17 +39,18 @@
                         <div>
                             <p class="deliveries">Dodane
                                 przez: ${details.username}, ${details.localDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"))}</p>
-                            <span class="badge badge-success badge-pill ml-2">${details.start}</span>
-                            <span class="badge badge-success badge-pill ml-2">${details.end} </span>
-                            <p class="h5 mb-0 font-weight-bold text-gray-800"> ${details.name}</p>
+                            <span class="btn btn-warning">${details.start}</span>
+                            <span class="btn btn-warning">${details.end} </span>
+                            <span class="h5 mb-0 font-weight-bold text-gray-800"> ${details.name}</span>
 
                             <c:if test="${details.packaging == '1'}">
+                                <div class="my-2"></div>
                                 <div>
-                                    <span class="badge badge-success badge-pill ml-2">Opakowania do zwrotu</span>
+                                    <span class="btn btn-info">Opakowania do zwrotu</span>
                                 </div>
                             </c:if>
+                            <div class="my-2"></div>
                             <p class="desc"> ${details.description}</p>
-
 
                         </div>
                         <div>
@@ -79,8 +59,6 @@
                             <a class="btn btn-outline-danger btn-sm ml-2" href='<c:url value="/app/delete?id=${details.id}"/>' onclick="return confirm('Czy chcesz usunąć wybraną pozycję?');">Usuń</a>
 
                         </div>
-
-
 
                     </li>
                 </ul>
