@@ -36,14 +36,14 @@
                         <div>
                             <p class="deliveries">Dodane
                                 przez: ${details.username}, ${details.localDateTime.format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"))}</p>
-                            <span class="btn btn-warning">${details.start}</span>
-                            <span class="btn btn-warning">${details.end} </span>
+                            <span class="btn btn-warning ">${details.start}</span>
+                            <span class="btn btn-warning ">${details.end} </span>
                             <span class="h5 mb-0 font-weight-bold text-gray-800"> ${details.name}</span>
 
                             <c:if test="${details.packaging == '1'}">
                                 <div class="my-2"></div>
                                 <div>
-                                    <span class="btn btn-info">Opakowania do zwrotu</span>
+                                    <span class="btn btn-info ">Opakowania do zwrotu</span>
                                 </div>
                             </c:if>
                             <div class="my-2"></div>
@@ -51,9 +51,16 @@
 
                         </div>
                         <div>
-                            <button class="btn btn-dark btn-sm">Zakończ</button>
-                            <a class="btn btn-dark btn-sm" href="<c:url value="/app/edit?id=${details.id}"/> ">Edytuj</a>
-                            <a class="btn btn-outline-danger btn-sm ml-2" href='<c:url value="/app/delete?id=${details.id}"/>' onclick="return confirm('Czy chcesz usunąć wybraną pozycję?');">Usuń</a>
+                            <c:choose>
+                                <c:when test="${details.status =='1'}">
+                                <button class="btn btn-success" >Dostawa zakończona</button>
+                                </c:when>
+                                <c:otherwise>
+                                    <a class="btn btn-dark" href="<c:url value="/app/status?id=${details.id}"/>" onclick="return confirm('Czy chcesz zamknąć dostawę?');">Zakończ</a>
+                                </c:otherwise>
+                            </c:choose>
+                            <a class="btn btn-dark" href="<c:url value="/app/edit?id=${details.id}"/> ">Edytuj</a>
+                            <a class="btn btn-danger" href='<c:url value="/app/delete?id=${details.id}"/>' onclick="return confirm('Czy chcesz usunąć wybraną pozycję?');">Usuń</a>
 
                         </div>
 

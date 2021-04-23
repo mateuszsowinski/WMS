@@ -13,8 +13,10 @@ public class Details {
     private LocalDateTime localDateTime;
     private String name;
     private String username;
+    private int status;
+    private LocalDateTime dateStatus;
 
-    public Details(Date date, String start, String end, int packaging, String description, LocalDateTime localDateTime, String name, String username) {
+    public Details(Date date, String start, String end, int packaging, String description, LocalDateTime localDateTime, String name, String username,int status, LocalDateTime dateStatus) {
         this.date = date;
         this.start = start;
         this.end = end;
@@ -23,6 +25,8 @@ public class Details {
         this.localDateTime = localDateTime;
         this.name = name;
         this.username = username;
+        this.status = status;
+        this.dateStatus = dateStatus;
     }
 
     public Details() {
@@ -98,6 +102,22 @@ public class Details {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getDateStatus() {
+        return dateStatus;
+    }
+
+    public void setDateStatus(LocalDateTime dateStatus) {
+        this.dateStatus = dateStatus;
     }
 }
 

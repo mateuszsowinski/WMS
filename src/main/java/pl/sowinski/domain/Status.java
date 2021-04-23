@@ -17,6 +17,13 @@ public class Status {
         this.deliveryId = deliveryId;
     }
 
+    public Status(int status, LocalDateTime dateStatus, int userId, int deliveryId) {
+        this.status = status;
+        this.dateStatus = dateStatus;
+        this.userId = userId;
+        this.deliveryId = deliveryId;
+    }
+
     public Status() {
     }
 
