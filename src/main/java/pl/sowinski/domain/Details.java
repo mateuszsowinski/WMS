@@ -1,33 +1,35 @@
 package pl.sowinski.domain;
 
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
-public class Deliveries {
+public class Details {
     private int id;
     private Date date;
     private String start;
     private String end;
     private int packaging;
     private String description;
-    private int userId;
-    private int suppliersId;
     private LocalDateTime localDateTime;
+    private String name;
+    private String username;
+    private int status;
+    private LocalDateTime dateStatus;
 
-
-    public Deliveries() {
-    }
-
-    public Deliveries(Date date, String start, String end, int packaging, String description, int userId, int suppliersId, LocalDateTime localDateTime) {
+    public Details(Date date, String start, String end, int packaging, String description, LocalDateTime localDateTime, String name, String username,int status, LocalDateTime dateStatus) {
         this.date = date;
         this.start = start;
         this.end = end;
         this.packaging = packaging;
         this.description = description;
-        this.userId = userId;
-        this.suppliersId = suppliersId;
         this.localDateTime = localDateTime;
+        this.name = name;
+        this.username = username;
+        this.status = status;
+        this.dateStatus = dateStatus;
+    }
+
+    public Details() {
     }
 
     public int getId() {
@@ -78,22 +80,6 @@ public class Deliveries {
         this.description = description;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
-    }
-
-    public int getSuppliersId() {
-        return suppliersId;
-    }
-
-    public void setSuppliersId(int suppliersId) {
-        this.suppliersId = suppliersId;
-    }
-
     public LocalDateTime getLocalDateTime() {
         return localDateTime;
     }
@@ -101,4 +87,37 @@ public class Deliveries {
     public void setLocalDateTime(LocalDateTime localDateTime) {
         this.localDateTime = localDateTime;
     }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
+
+    public LocalDateTime getDateStatus() {
+        return dateStatus;
+    }
+
+    public void setDateStatus(LocalDateTime dateStatus) {
+        this.dateStatus = dateStatus;
+    }
 }
+
