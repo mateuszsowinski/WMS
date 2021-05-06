@@ -12,7 +12,7 @@ import java.util.*;
 
 public class DetailsDao {
 
-    private static final String DETAILS = "SELECT deliveries.id, DATE_ADD(deliveries.date, INTERVAL 1 DAY ) as date, deliveries.start, deliveries.end, deliveries.packaging, deliveries.description, deliveries.localdatetime, suppliers.name, u.username FROM deliveries JOIN suppliers on deliveries.suppliers_id = suppliers.id JOIN user u on deliveries.user_id = u.id ORDER BY deliveries.date DESC;";
+    private static final String DETAILS = "SELECT deliveries.id, DATE_ADD(deliveries.date, INTERVAL 1 DAY ) as date, deliveries.start, deliveries.end, deliveries.packaging, deliveries.description, deliveries.localdatetime, suppliers.name, u.username, s.status, s.dateStatus  FROM deliveries JOIN suppliers on deliveries.suppliers_id = suppliers.id JOIN user u on deliveries.user_id = u.id LEFT JOIN status s on deliveries.id = s.deliveryId ORDER BY deliveries.date DESC";
 
     public Map<Date, List<Details>> detailsMap(){
         Map<Date, List<Details>> stringListMap = new TreeMap<>(Collections.reverseOrder());
@@ -34,6 +34,8 @@ public class DetailsDao {
                     details.setLocalDateTime(resultSet.getTimestamp("localdatetime").toLocalDateTime());
                     details.setName(resultSet.getString("name"));
                     details.setUsername(resultSet.getString("username"));
+                    details.setStatus(resultSet.getInt("status"));
+//                    details.setDateStatus(resultSet.getTimestamp("dateStatus").toLocalDateTime());
 
                     stringListMap.get(date).add(details);
                 }
