@@ -57,10 +57,10 @@
                                 </c:when>
                                 <c:otherwise>
                                     <a class="btn btn-dark" href="<c:url value="/app/status?id=${details.id}"/>" onclick="return confirm('Czy chcesz zamknąć dostawę?');">Zakończ</a>
+                                    <a class="btn btn-dark" href="<c:url value="/app/edit?id=${details.id}"/> ">Edytuj</a>
+                                    <a class="btn btn-danger" href='<c:url value="/app/delete?id=${details.id}"/>' onclick="return confirm('Czy chcesz usunąć wybraną pozycję?');">Usuń</a>
                                 </c:otherwise>
                             </c:choose>
-                            <a class="btn btn-dark" href="<c:url value="/app/edit?id=${details.id}"/> ">Edytuj</a>
-                            <a class="btn btn-danger" href='<c:url value="/app/delete?id=${details.id}"/>' onclick="return confirm('Czy chcesz usunąć wybraną pozycję?');">Usuń</a>
 
                         </div>
 
